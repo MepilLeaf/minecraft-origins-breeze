@@ -1,0 +1,14 @@
+{
+  "powers": ["breeze:nothing"],
+  "icon": {
+    "id": "minecraft:wind_charge",
+    "tag": {
+      "CustomModelData": 1234
+    }
+  },
+  "order": 0,
+  "impact": 1,
+  "unchoosable": false,
+  "name": "BBEG-ER (Team Rocket)",
+  "description": "a curse unto thine world"
+}
