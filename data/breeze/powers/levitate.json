@@ -1,12 +1,82 @@
 {
   "type": "origins:multiple",
 
-  "is_active": {
+  "flight_charge": {
+    "type": "origins:resource",
+    "min": 0,
+    "max": 100,
+    "start_value": 50,
+    "hud_render": {
+      "should_render": true,
+      "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+      "bar_index": 6
+    }
+  },
+
+  "not_grounded_and_spacebar_released": {
     "type": "origins:resource",
     "min": 0,
     "max": 1,
     "hud_render": {
-      "should_render": true
+      "should_render": true,
+      "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+      "bar_index": 5
+    }
+  },
+
+  "activate_not_grounded_and_spacebar_released": {
+    "type": "origins:action_over_time",
+    "entity_action": {
+      "type": "origins:change_resource",
+      "resource": "*:*_not_grounded_and_spacebar_released",
+      "operation": "set",
+      "change": 1
+    },
+    "interval": 1,
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:resource",
+          "resource": "*:*_grounded",
+          "comparison": "==",
+          "compare_to": 0
+        },
+        {
+          "type": "origins:resource",
+          "resource": "*:*_spacebar_pressed_buffer",
+          "comparison": "==",
+          "compare_to": 0
+        }
+      ]
+    }
+  },
+
+  "disable_not_grounded_and_spacebar_released": {
+    "type": "origins:action_over_time",
+    "entity_action": {
+      "type": "origins:change_resource",
+      "resource": "*:*_not_grounded_and_spacebar_released",
+      "operation": "set",
+      "change": 0
+    },
+    "interval": 1,
+    "condition": {
+      "type": "origins:or",
+      "conditions": [
+        {
+          "type": "origins:resource",
+          "resource": "*:*_grounded",
+          "comparison": "==",
+          "compare_to": 1
+        },
+        {
+          "type": "origins:resource",
+          "resource": "*:*_flight_charge",
+          "comparison": "==",
+          "compare_to": 0
+        }
+      ]
     }
   },
 
