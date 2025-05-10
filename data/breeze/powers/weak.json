@@ -1,0 +1,32 @@
+{
+  "type": "origins:multiple",
+
+  "no_shield": {
+    "type": "origins:prevent_item_use",
+    "item_condition": {
+      "type": "origins:ingredient",
+      "ingredient": {
+        "tag": "origins:shields"
+      }
+    }
+  },
+
+  "less_health": {
+    "type": "origins:conditioned_attribute",
+    "modifier": {
+      "id": "*:*",
+      "attribute": "minecraft:generic.max_health",
+      "amount": -8.0,
+      "operation": "add_value"
+    },
+    "interval": 1,
+    "condition": {
+      "type": "origins:origin",
+      "origin": "breeze:breeze",
+      "layer": "origins:origin"
+    }
+  },
+
+  "name": "§b§nWeak",
+  "description": "§fYou are naturally weaker, as a result you have 4 less hearts and can't use shields."
+}
