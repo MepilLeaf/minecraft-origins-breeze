@@ -1,0 +1,112 @@
+{
+  "type": "origins:multiple",
+
+  "disable_grounded_attacks_speed": {
+    "type": "origins:conditioned_attribute",
+    "modifier": {
+      "id": "*:*",
+      "attribute": "minecraft:generic.attack_speed",
+      "amount": -10.0,
+      "operation": "add_value"
+    },
+    "tick_rate": 1,
+    "condition": {
+      "type": "origins:resource",
+      "resource": "breeze:levitate_grounded",
+      "comparison": "==",
+      "compare_to": 1
+    }
+  },
+
+  "disable_grounded_attacks_damage": {
+    "type": "origins:conditioned_attribute",
+    "modifier": {
+      "id": "*:*",
+      "attribute": "minecraft:generic.attack_damage",
+      "amount": -10.0,
+      "operation": "add_value"
+    },
+    "tick_rate": 1,
+    "condition": {
+      "type": "origins:resource",
+      "resource": "breeze:levitate_grounded",
+      "comparison": "==",
+      "compare_to": 1
+    }
+  },
+
+  "aerial_extension": {
+    "type": "origins:action_on_hit",
+    "bientity_action": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:target_action",
+          "action": {
+            "type": "origins:and",
+            "actions": [
+              {
+                "type": "origins:execute_command",
+                "command": "execute positioned ~ ~-0.5 ~ run function breeze:aerial_hit_particles"
+              },
+              {
+                "type": "origins:add_velocity",
+                "y": 0.6,
+                "set": true
+              },
+              {
+                "type": "origins:play_sound",
+                "sound": "minecraft:entity.breeze.charge",
+                "volume": 1.0
+              }
+            ]
+          }
+        },
+        {
+          "type": "origins:actor_action",
+          "action": {
+            "type": "origins:and",
+            "actions": [
+              {
+                "type": "origins:change_resource",
+                "resource": "breeze:levitate_flight_charge",
+                "change": 10
+              },
+              {
+                "type": "origins:play_sound",
+                "sound": "minecraft:entity.breeze.charge",
+                "volume": 1.0
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "bientity_condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:target_condition",
+          "condition": {
+            "type": "origins:block_collision",
+            "offset_x": 0,
+            "offset_y": -0.1,
+            "offset_z": 0,
+            "inverted": true
+          }
+        },
+        {
+          "type": "origins:actor_condition",
+          "condition": {
+            "type": "origins:resource",
+            "resource": "breeze:levitate_grounded",
+            "comparison": "==",
+            "compare_to": 0
+          }
+        }
+      ]
+    }
+  },
+  "name": "§b§nAerial Combat",
+  "description": "§fYou are great at fighting midair, however you can only attack enemies while you are airborne. If you hit an enemy while you are both airborne they will be launched up a and you will regain a small amount of your §b[Levitate]§f charge."
+}

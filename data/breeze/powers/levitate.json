@@ -1,0 +1,368 @@
+{
+  "type": "origins:multiple",
+
+  "fly": {
+    "type": "origins:active_self",
+    "entity_action": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:apply_effect",
+          "effect": {
+            "id": "minecraft:levitation",
+            "duration": 2,
+            "amplifier": 2,
+            "show_icon": false,
+            "is_ambient": true,
+            "show_particles": false
+          }
+        },
+        {
+          "type": "origins:change_resource",
+          "resource": "*:*_flight_charge",
+          "change": -1
+        },
+        {
+          "type": "origins:change_resource",
+          "resource": "*:*_is_flying_buffer",
+          "operation": "set",
+          "change": 30
+        }
+      ]
+    },
+    "cooldown": 1,
+    "hud_render": {
+      "should_render": false
+    },
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:resource",
+          "resource": "*:*_can_fly",
+          "comparison": "==",
+          "compare_to": 1
+        },
+        {
+          "type": "origins:submerged_in",
+          "fluid": "minecraft:water",
+          "inverted": true
+        },
+        {
+          "type": "origins:submerged_in",
+          "fluid": "minecraft:lava",
+          "inverted": true
+        }
+      ]
+    },
+    "key": {
+      "key": "key.jump",
+      "continuous": true
+    }
+  },
+
+  "flight_particles": {
+    "type": "origins:active_self",
+    "entity_action": {
+      "type": "origins:execute_command",
+      "command": "execute positioned ~ ~-0.5 ~ run function breeze:levitate_particles"
+    },
+    "cooldown": 2,
+    "hud_render": {
+      "should_render": false
+    },
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:resource",
+          "resource": "*:*_can_fly",
+          "comparison": "==",
+          "compare_to": 1
+        },
+        {
+          "type": "origins:submerged_in",
+          "fluid": "minecraft:water",
+          "inverted": true
+        },
+        {
+          "type": "origins:submerged_in",
+          "fluid": "minecraft:lava",
+          "inverted": true
+        }
+      ]
+    },
+    "key": {
+      "key": "key.jump",
+      "continuous": true
+    }
+  },
+
+  "flight_sound": {
+    "type": "origins:active_self",
+    "entity_action": {
+      "type": "origins:play_sound",
+      "sound": "minecraft:entity.breeze.whirl",
+      "volume": 1.0
+    },
+    "cooldown": 20,
+    "hud_render": {
+      "should_render": false
+    },
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:resource",
+          "resource": "*:*_can_fly",
+          "comparison": "==",
+          "compare_to": 1
+        },
+        {
+          "type": "origins:submerged_in",
+          "fluid": "minecraft:water",
+          "inverted": true
+        },
+        {
+          "type": "origins:submerged_in",
+          "fluid": "minecraft:lava",
+          "inverted": true
+        }
+      ]
+    },
+    "key": {
+      "key": "key.jump",
+      "continuous": true
+    }
+  },
+
+  "flight_charge": {
+    "type": "origins:resource",
+    "min": 0,
+    "max": 100,
+    "start_value": 100,
+    "hud_render": {
+      "should_render": true,
+      "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+      "bar_index": 16
+    }
+  },
+
+  "refill_flight_charge": {
+    "type": "origins:action_over_time",
+    "entity_action": {
+      "type": "origins:change_resource",
+      "resource": "*:*_flight_charge",
+      "change": 2
+    },
+    "interval": 1,
+    "condition": {
+      "type": "origins:resource",
+      "resource": "*:*_is_flying_buffer",
+      "comparison": "==",
+      "compare_to": 0
+    }
+  },
+
+  "can_fly": {
+    "type": "origins:resource",
+    "min": 0,
+    "max": 1,
+    "hud_render": {
+      "should_render": false
+    }
+  },
+
+  "activate_can_fly": {
+    "type": "origins:action_over_time",
+    "entity_action": {
+      "type": "origins:change_resource",
+      "resource": "*:*_can_fly",
+      "operation": "set",
+      "change": 1
+    },
+    "interval": 1,
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:resource",
+          "resource": "*:*_grounded",
+          "comparison": "==",
+          "compare_to": 0
+        },
+        {
+          "type": "origins:resource",
+          "resource": "*:*_spacebar_pressed_buffer",
+          "comparison": "==",
+          "compare_to": 0
+        }
+      ]
+    }
+  },
+
+  "disable_can_fly": {
+    "type": "origins:action_over_time",
+    "entity_action": {
+      "type": "origins:change_resource",
+      "resource": "*:*_can_fly",
+      "operation": "set",
+      "change": 0
+    },
+    "interval": 1,
+    "condition": {
+      "type": "origins:or",
+      "conditions": [
+        {
+          "type": "origins:resource",
+          "resource": "*:*_grounded",
+          "comparison": "==",
+          "compare_to": 1
+        },
+        {
+          "type": "origins:resource",
+          "resource": "*:*_flight_charge",
+          "comparison": "==",
+          "compare_to": 0
+        }
+      ]
+    }
+  },
+
+  "is_flying_buffer": {
+    "type": "origins:resource",
+    "min": 0,
+    "max": 30,
+    "hud_render": {
+      "should_render": false
+    }
+  },
+
+  "decay_is_flying_buffer": {
+    "type": "origins:action_over_time",
+    "entity_action": {
+      "type": "origins:change_resource",
+      "resource": "*:*_is_flying_buffer",
+      "change": -1
+    },
+    "interval": 1,
+    "condition": {
+      "type": "origins:resource",
+      "resource": "*:*_is_flying_buffer",
+      "comparison": ">",
+      "compare_to": 0
+    }
+  },
+
+  "grounded": {
+    "type": "origins:resource",
+    "min": 0,
+    "max": 1,
+    "hud_render": {
+      "should_render": false
+    }
+  },
+
+  "update_grounded": {
+    "type": "origins:action_over_time",
+    "falling_action": {
+      "type": "origins:change_resource",
+      "resource": "*:*_grounded",
+      "operation": "set",
+      "change": 0
+    },
+    "rising_action": {
+      "type": "origins:change_resource",
+      "resource": "*:*_grounded",
+      "operation": "set",
+      "change": 1
+    },
+    "interval": 1,
+    "condition": {
+      "type": "origins:block_collision",
+      "offset_x": 0,
+      "offset_y": -0.1,
+      "offset_z": 0
+    }
+  },
+
+  "spacebar_pressed_buffer": {
+    "type": "origins:resource",
+    "min": 0,
+    "max": 3,
+    "hud_render": {
+      "should_render": false
+    }
+  },
+
+  "decay_spacebar_pressed_buffer": {
+    "type": "origins:action_over_time",
+    "entity_action": {
+      "type": "origins:change_resource",
+      "resource": "*:*_spacebar_pressed_buffer",
+      "change": -1
+    },
+    "interval": 1,
+    "condition": {
+      "type": "origins:resource",
+      "resource": "*:*_spacebar_pressed_buffer",
+      "comparison": ">",
+      "compare_to": 0
+    }
+  },
+
+  "update_spacebar_pressed_buffer": {
+    "type": "origins:active_self",
+    "entity_action": {
+      "type": "origins:change_resource",
+      "resource": "*:*_spacebar_pressed_buffer",
+      "change": 2
+    },
+    "cooldown": 1,
+    "key": {
+      "key": "key.jump",
+      "continuous": true
+    }
+  },
+
+  "jump_boost": {
+    "type": "origins:active_self",
+    "entity_action": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:play_sound",
+          "sound": "minecraft:entity.breeze.land",
+          "volume": 1.0
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "execute positioned ~ ~ ~ run function breeze:jump_particles",
+          "permission_level": 4
+        }
+      ]
+    },
+    "cooldown": 3,
+    "hud_render": {
+      "should_render": false
+    },
+    "condition": {
+      "type": "origins:resource",
+      "resource": "*:*_grounded",
+      "comparison": "==",
+      "compare_to": 1
+    },
+    "key": {
+      "key": "key.jump",
+      "continuous": true
+    }
+  },
+  "name": "§b§nLevitate",
+  "description": "§fYou can levitate for a short period of time before you need to recharge. Hold your jump key while airborne to levitate.",
+  "badges": [
+    {
+      "sprite": "origins:textures/gui/badge/active.png",
+      "text": "§d[Jump]"
+    }
+  ]
+}

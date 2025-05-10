@@ -1,0 +1,16 @@
+{
+  "type": "origins:conditioned_attribute",
+  "modifier": {
+    "id": "*:*",
+    "attribute": "minecraft:generic.jump_strength",
+    "amount": 0.2,
+    "operation": "add_value"
+  },
+  "interval": 1,
+  "condition": {
+    "type": "origins:origin",
+    "origin": "breeze:breeze",
+    "layer": "origins:origin"
+  },
+  "hidden": true
+}
