@@ -1,0 +1,15 @@
+{
+  "type": "origins:modify_break_speed",
+  "modifier": {
+    "operation": "multiply_base_additive",
+    "amount": 5
+  },
+  "condition": {
+    "type": "origins:block_collision",
+    "inverted": true,
+    "offset_x": 0,
+    "offset_y": -0.1,
+    "offset_z": 0
+  },
+  "hidden": true
+}
