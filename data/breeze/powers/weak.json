@@ -1,16 +1,6 @@
 {
   "type": "origins:multiple",
 
-  "no_shield": {
-    "type": "origins:prevent_item_use",
-    "item_condition": {
-      "type": "origins:ingredient",
-      "ingredient": {
-        "tag": "origins:shields"
-      }
-    }
-  },
-
   "less_health": {
     "type": "origins:conditioned_attribute",
     "modifier": {
