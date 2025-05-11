@@ -1,23 +1,6 @@
 {
   "type": "origins:multiple",
 
-  "disable_grounded_attacks_speed": {
-    "type": "origins:conditioned_attribute",
-    "modifier": {
-      "id": "*:*",
-      "attribute": "minecraft:generic.attack_speed",
-      "amount": -10.0,
-      "operation": "add_value"
-    },
-    "tick_rate": 1,
-    "condition": {
-      "type": "origins:resource",
-      "resource": "breeze:levitate_grounded",
-      "comparison": "==",
-      "compare_to": 1
-    }
-  },
-
   "disable_grounded_attacks_damage": {
     "type": "origins:conditioned_attribute",
     "modifier": {
