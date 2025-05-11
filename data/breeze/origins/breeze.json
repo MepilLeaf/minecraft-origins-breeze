@@ -5,7 +5,8 @@
     "breeze:wind_tunnel",
     "breeze:weak",
     "breeze:no_fall_damage",
-    "breeze:aerial_combat"
+    "breeze:aerial_combat",
+    "breeze:air_affinity"
   ],
   "icon": {
     "id": "minecraft:wind_charge",
