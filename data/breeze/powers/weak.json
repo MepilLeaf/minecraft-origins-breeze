@@ -1,16 +1,6 @@
 {
   "type": "origins:multiple",
 
-  "no_shield": {
-    "type": "origins:prevent_item_use",
-    "item_condition": {
-      "type": "origins:ingredient",
-      "ingredient": {
-        "tag": "origins:shields"
-      }
-    }
-  },
-
   "less_health": {
     "type": "origins:conditioned_attribute",
     "modifier": {
@@ -28,5 +18,5 @@
   },
 
   "name": "§b§nWeak",
-  "description": "§fYou are naturally weaker, as a result you have 4 less hearts and can't use shields."
+  "description": "§fYou are naturally weaker, as a result you have 4 less hearts."
 }
