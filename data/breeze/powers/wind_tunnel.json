@@ -361,7 +361,7 @@
   },
 
   "name": "§b§nWind Tunnel",
-  "description": "§fYou can launch yourself or a chosen target. Press §d[Primary Active]§f key to launch a target upwards or §d[Secondary Active]§f key to launch a target downwards. If you are holding your §d[Sneak]§f key when you activate §b[Wind Tunnel]§f, you will instead launch yourself.",
+  "description": "§fYou can launch yourself or a chosen target. Press §d[Primary Active]§f key to launch a target upwards or §d[Secondary Active]§f key to launch a target downwards. If you hold §d[Sneak]§f, §b[Wind Tunnel]§f will launch you instead. If you launch yourself upward with §b[Wind Tunnel]§f while on the ground, the force will be significantly reduced.",
   "badges": [
     {
       "sprite": "origins:textures/gui/badge/active.png",
