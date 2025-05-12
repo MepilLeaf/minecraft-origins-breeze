@@ -1,23 +1,6 @@
 {
   "type": "origins:multiple",
 
-  "disable_grounded_attacks_damage": {
-    "type": "origins:conditioned_attribute",
-    "modifier": {
-      "id": "*:*",
-      "attribute": "minecraft:generic.attack_damage",
-      "amount": -10.0,
-      "operation": "add_value"
-    },
-    "tick_rate": 1,
-    "condition": {
-      "type": "origins:resource",
-      "resource": "breeze:levitate_grounded",
-      "comparison": "==",
-      "compare_to": 1
-    }
-  },
-
   "aerial_extension": {
     "type": "origins:action_on_hit",
     "bientity_action": {
@@ -91,5 +74,5 @@
     }
   },
   "name": "§b§nAerial Combat",
-  "description": "§fYou are great at fighting midair, however you can only attack enemies while you are airborne. If you hit an enemy while you are both airborne they will be launched up a and you will regain a small amount of your §b[Levitate]§f charge."
+  "description": "§fYou are great at fighting midair. If you hit an enemy while you are both airborne they will be launched up a and you will regain a small amount of your §b[Levitate]§f charge."
 }
