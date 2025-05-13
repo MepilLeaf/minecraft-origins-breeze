@@ -144,7 +144,11 @@
     "hud_render": {
       "should_render": true,
       "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
-      "bar_index": 16
+      "bar_index": 16,
+      "condition": {
+        "type": "origins:power_active",
+        "power": "*:*_toggle_is_active"
+      }
     }
   },
 
@@ -196,6 +200,10 @@
           "resource": "*:*_spacebar_pressed_buffer",
           "comparison": "==",
           "compare_to": 0
+        },
+        {
+          "type": "origins:power_active",
+          "power": "*:*_toggle_is_active"
         }
       ]
     }
@@ -224,6 +232,11 @@
           "resource": "*:*_flight_charge",
           "comparison": "==",
           "compare_to": 0
+        },
+        {
+          "type": "origins:power_active",
+          "power": "*:*_toggle_is_active",
+          "inverted": true
         }
       ]
     }
@@ -357,8 +370,33 @@
       "continuous": true
     }
   },
+
+  "toggle_is_active": {
+    "type": "origins:toggle",
+    "key": {
+      "key": "key.saveToolbarActivator"
+    }
+  },
+
+  "flight_charge_disabled": {
+    "type": "origins:resource",
+    "min": 0,
+    "max": 1,
+    "start_value": 1,
+    "hud_render": {
+      "should_render": true,
+      "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+      "bar_index": 17,
+      "condition": {
+        "type": "origins:power_active",
+        "power": "*:*_toggle_is_active",
+        "inverted": true
+      }
+    }
+  },
+
   "name": "§b§nLevitate",
-  "description": "§fYou can levitate for a short period of time before you need to recharge. Hold your jump key while airborne to levitate.",
+  "description": "§fYou can levitate for a short period of time before you need to recharge. Hold your §d[Jump]§f key while airborne to levitate. You can disable this ability by pressing §d[Save Toolbar Activator]§f.",
   "badges": [
     {
       "sprite": "origins:textures/gui/badge/active.png",
