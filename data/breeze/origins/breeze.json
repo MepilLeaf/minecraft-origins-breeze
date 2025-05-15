@@ -1,12 +1,10 @@
 {
   "powers": [
-    "breeze:levitate",
-    "breeze:jump_boost",
     "breeze:wind_tunnel",
     "breeze:weak",
     "breeze:no_fall_damage",
-    "breeze:aerial_combat",
-    "breeze:air_affinity"
+    "breeze:air_affinity",
+    "breeze:mobile"
   ],
   "icon": {
     "id": "minecraft:wind_charge",
@@ -15,8 +13,8 @@
     }
   },
   "order": 0,
-  "impact": 2,
+  "impact": 1,
   "unchoosable": false,
   "name": "Breeze",
-  "description": "§fLoosely related to the breeze, you are adept with manipulating the air around yourself and those around you."
+  "description": "§fLoosely related to the breeze, you are adept with manipulating the air around yourself to your advantage."
 }
