@@ -275,7 +275,7 @@
     "type": "origins:action_over_time",
     "entity_action": {
       "type": "origins:execute_command",
-      "command": "execute positioned ~ ~-1 ~ run function breeze:sprinting_particles"
+      "command": "execute positioned ~ ~-1 ~ run function breeze:trail_particles"
     },
     "interval": 1,
     "condition": {
