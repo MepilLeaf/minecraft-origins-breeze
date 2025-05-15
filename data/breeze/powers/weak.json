@@ -6,7 +6,7 @@
     "modifier": {
       "id": "*:*",
       "attribute": "minecraft:generic.max_health",
-      "amount": -8.0,
+      "amount": -4.0,
       "operation": "add_value"
     },
     "interval": 1,
@@ -17,6 +17,6 @@
     }
   },
 
-  "name": "§b§nWeak",
-  "description": "§fYou are naturally weaker, as a result you have 4 less hearts."
+  "name": "§b§nFragile",
+  "description": "§fDue to your delicate nature, you lack natural fortitude, as a result you have 2 less hearts."
 }

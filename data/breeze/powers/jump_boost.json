@@ -3,7 +3,7 @@
   "modifier": {
     "id": "*:*",
     "attribute": "minecraft:generic.jump_strength",
-    "amount": 0.2,
+    "amount": 0.3,
     "operation": "add_value"
   },
   "interval": 1,

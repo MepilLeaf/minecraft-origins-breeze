@@ -1,0 +1,36 @@
+{
+  "type": "origins:multiple",
+
+  "base_jump_boost": {
+    "type": "origins:conditioned_attribute",
+    "modifier": {
+      "id": "*:*",
+      "attribute": "minecraft:generic.jump_strength",
+      "amount": 0.2,
+      "operation": "add_value"
+    },
+    "interval": 1,
+    "condition": {
+      "type": "origins:origin",
+      "origin": "breeze:breeze",
+      "layer": "origins:origin"
+    }
+  },
+  "fast_movement": {
+    "type": "origins:conditioned_attribute",
+    "modifier": {
+      "id": "*:*",
+      "attribute": "minecraft:generic.movement_speed",
+      "amount": 0.04,
+      "operation": "add_value"
+    },
+    "interval": 1,
+    "condition": {
+      "type": "origins:origin",
+      "origin": "breeze:breeze",
+      "layer": "origins:origin"
+    }
+  },
+  "name": "§b§nLight",
+  "description": "§fYour ligher weight allows you to run faster and jump higher."
+}
