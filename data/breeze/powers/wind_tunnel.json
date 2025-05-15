@@ -5,7 +5,7 @@
     "type": "origins:resource",
     "min": 0,
     "max": 140,
-    "start_value": 140,
+    "start_value": 60,
     "hud_render": {
       "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_points_01.png",
       "bar_index": 17
@@ -22,7 +22,7 @@
 
   "use_buffer_for_recharge": {
     "type": "origins:cooldown",
-    "cooldown": 60,
+    "cooldown": 40,
     "hud_render": {
       "should_render": false
     }
@@ -35,200 +35,21 @@
       "resource": "*:*_charges",
       "change": 20
     },
-    "interval": 3,
-    "condition": {
-      "type": "origins:resource",
-      "resource": "*:*_use_buffer_for_recharge",
-      "comparison": "==",
-      "compare_to": 0
-    }
-  },
-
-  "raycast_up": {
-    "type": "origins:active_self",
-    "entity_action": {
-      "type": "origins:raycast",
-      "distance": 20.0,
-      "block": true,
-      "entity": true,
-      "shape_type": "outline",
-      "fluid_handling": "none",
-      "space": "world",
-      "bientity_action": {
-        "type": "origins:and",
-        "actions": [
-          {
-            "type": "origins:target_action",
-            "action": {
-              "type": "origins:and",
-              "actions": [
-                {
-                  "type": "origins:execute_command",
-                  "command": "function breeze:wind_tunnel_particles"
-                },
-                {
-                  "type": "origins:add_velocity",
-                  "set": true,
-                  "y": 1.8
-                },
-                {
-                  "type": "origins:play_sound",
-                  "sound": "minecraft:entity.breeze.shoot",
-                  "volume": 2.0
-                }
-              ]
-            }
-          }
-        ]
-      },
-      "before_action": {
-        "type": "origins:and",
-        "actions": [
-          {
-            "type": "origins:trigger_cooldown",
-            "power": "*:*_use_cooldown"
-          },
-          {
-            "type": "origins:trigger_cooldown",
-            "power": "*:*_use_buffer_for_recharge"
-          },
-          {
-            "type": "origins:play_sound",
-            "sound": "minecraft:entity.breeze.jump",
-            "volume": 1.0
-          },
-          {
-            "type": "origins:change_resource",
-            "resource": "*:*_charges",
-            "change": -20
-          }
-        ]
-      },
-      "command_along_ray": "particle minecraft:end_rod",
-      "command_step": 1,
-      "command_along_ray_only_on_hit": false
-    },
-    "cooldown": 1,
-    "hud_render": {
-      "should_render": false
-    },
-    "key": {
-      "key": "key.origins.primary_active",
-      "continuous": false
-    },
+    "interval": 12,
     "condition": {
       "type": "origins:and",
       "conditions": [
         {
           "type": "origins:resource",
-          "resource": "*:*_charges",
-          "comparison": ">",
-          "compare_to": 0
-        },
-        {
-          "type": "origins:resource",
-          "resource": "*:*_use_cooldown",
+          "resource": "*:*_use_buffer_for_recharge",
           "comparison": "==",
           "compare_to": 0
         },
         {
-          "type": "origins:sneaking",
-          "inverted": true
-        }
-      ]
-    }
-  },
-
-  "raycast_down": {
-    "type": "origins:active_self",
-    "entity_action": {
-      "type": "origins:raycast",
-      "distance": 20.0,
-      "block": true,
-      "entity": true,
-      "shape_type": "outline",
-      "fluid_handling": "none",
-      "space": "world",
-      "bientity_action": {
-        "type": "origins:and",
-        "actions": [
-          {
-            "type": "origins:target_action",
-            "action": {
-              "type": "origins:and",
-              "actions": [
-                {
-                  "type": "origins:execute_command",
-                  "command": "function breeze:wind_tunnel_particles_inverse"
-                },
-                {
-                  "type": "origins:add_velocity",
-                  "set": true,
-                  "y": -3.0
-                },
-                {
-                  "type": "origins:play_sound",
-                  "sound": "minecraft:entity.breeze.shoot",
-                  "volume": 2.0
-                }
-              ]
-            }
-          }
-        ]
-      },
-      "before_action": {
-        "type": "origins:and",
-        "actions": [
-          {
-            "type": "origins:trigger_cooldown",
-            "power": "*:*_use_cooldown"
-          },
-          {
-            "type": "origins:trigger_cooldown",
-            "power": "*:*_use_buffer_for_recharge"
-          },
-          {
-            "type": "origins:play_sound",
-            "sound": "minecraft:entity.breeze.jump",
-            "volume": 1.0
-          },
-          {
-            "type": "origins:change_resource",
-            "resource": "*:*_charges",
-            "change": -20
-          }
-        ]
-      },
-      "command_along_ray": "particle minecraft:end_rod",
-      "command_step": 1,
-      "command_along_ray_only_on_hit": false
-    },
-    "cooldown": 1,
-    "hud_render": {
-      "should_render": false
-    },
-    "key": {
-      "key": "key.origins.secondary_active",
-      "continuous": false
-    },
-    "condition": {
-      "type": "origins:and",
-      "conditions": [
-        {
           "type": "origins:resource",
           "resource": "*:*_charges",
-          "comparison": ">",
-          "compare_to": 0
-        },
-        {
-          "type": "origins:resource",
-          "resource": "*:*_use_cooldown",
-          "comparison": "==",
-          "compare_to": 0
-        },
-        {
-          "type": "origins:sneaking",
-          "inverted": true
+          "comparison": "<=",
+          "compare_to": 40
         }
       ]
     }
@@ -246,7 +67,7 @@
         {
           "type": "origins:add_velocity",
           "set": true,
-          "y": 1.6
+          "y": 1.3
         },
         {
           "type": "origins:play_sound",
@@ -265,6 +86,10 @@
           "type": "origins:change_resource",
           "resource": "*:*_charges",
           "change": -20
+        },
+        {
+          "type": "origins:trigger_cooldown",
+          "power": "*:*_trail_active"
         }
       ]
     },
@@ -286,72 +111,6 @@
           "resource": "*:*_use_cooldown",
           "comparison": "==",
           "compare_to": 0
-        },
-        {
-          "type": "origins:sneaking"
-        }
-      ]
-    },
-    "key": {
-      "key": "key.origins.primary_active"
-    }
-  },
-
-  "self_down": {
-    "type": "origins:active_self",
-    "entity_action": {
-      "type": "origins:and",
-      "actions": [
-        {
-          "type": "origins:execute_command",
-          "command": "function breeze:wind_tunnel_particles_inverse"
-        },
-        {
-          "type": "origins:add_velocity",
-          "set": true,
-          "y": -2.0
-        },
-        {
-          "type": "origins:play_sound",
-          "sound": "minecraft:entity.breeze.shoot",
-          "volume": 2.0
-        },
-        {
-          "type": "origins:trigger_cooldown",
-          "power": "*:*_use_cooldown"
-        },
-        {
-          "type": "origins:trigger_cooldown",
-          "power": "*:*_use_buffer_for_recharge"
-        },
-        {
-          "type": "origins:change_resource",
-          "resource": "*:*_charges",
-          "change": -20
-        }
-      ]
-    },
-    "cooldown": 1,
-    "hud_render": {
-      "should_render": false
-    },
-    "condition": {
-      "type": "origins:and",
-      "conditions": [
-        {
-          "type": "origins:resource",
-          "resource": "*:*_charges",
-          "comparison": ">",
-          "compare_to": 0
-        },
-        {
-          "type": "origins:resource",
-          "resource": "*:*_use_cooldown",
-          "comparison": "==",
-          "compare_to": 0
-        },
-        {
-          "type": "origins:sneaking"
         }
       ]
     },
@@ -360,12 +119,179 @@
     }
   },
 
+  "self_directional": {
+    "type": "origins:active_self",
+    "entity_action": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:add_velocity",
+          "set": false,
+          "space": "local",
+          "z": 1.0
+        },
+        {
+          "type": "origins:play_sound",
+          "sound": "minecraft:entity.breeze.shoot",
+          "volume": 2.0
+        },
+        {
+          "type": "origins:trigger_cooldown",
+          "power": "*:*_use_cooldown"
+        },
+        {
+          "type": "origins:trigger_cooldown",
+          "power": "*:*_use_buffer_for_recharge"
+        },
+        {
+          "type": "origins:change_resource",
+          "resource": "*:*_charges",
+          "change": -20
+        },
+        {
+          "type": "origins:trigger_cooldown",
+          "power": "*:*_trail_active"
+        }
+      ]
+    },
+    "cooldown": 1,
+    "hud_render": {
+      "should_render": false
+    },
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:resource",
+          "resource": "*:*_charges",
+          "comparison": ">",
+          "compare_to": 0
+        },
+        {
+          "type": "origins:resource",
+          "resource": "*:*_use_cooldown",
+          "comparison": "==",
+          "compare_to": 0
+        }
+      ]
+    },
+    "key": {
+      "key": "key.origins.primary_active"
+    }
+  },
+
+  "particles_offset_self_directional": {
+    "type": "origins:active_self",
+    "entity_action": {
+      "type": "origins:execute_command",
+      "command": "execute positioned ~ ~1 ~ run function breeze:wind_tunnel_directional_particles"
+    },
+    "cooldown": 1,
+    "hud_render": {
+      "should_render": false
+    },
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:resource",
+          "resource": "*:*_charges",
+          "comparison": ">",
+          "compare_to": 0
+        },
+        {
+          "type": "origins:resource",
+          "resource": "*:*_use_cooldown",
+          "comparison": "==",
+          "compare_to": 0
+        },
+        {
+          "type": "origins:fall_flying",
+          "inverted": true
+        },
+        {
+          "type": "origins:swimming",
+          "inverted": true
+        }
+      ]
+    },
+    "key": {
+      "key": "key.origins.primary_active"
+    }
+  },
+
+  "no_offset_self_directional": {
+    "type": "origins:active_self",
+    "entity_action": {
+      "type": "origins:execute_command",
+      "command": "execute positioned ~ ~ ~ run function breeze:wind_tunnel_directional_particles"
+    },
+    "cooldown": 1,
+    "hud_render": {
+      "should_render": false
+    },
+    "condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:resource",
+          "resource": "*:*_charges",
+          "comparison": ">",
+          "compare_to": 0
+        },
+        {
+          "type": "origins:resource",
+          "resource": "*:*_use_cooldown",
+          "comparison": "==",
+          "compare_to": 0
+        },
+        {
+          "type": "origins:or",
+          "conditions": [
+            {
+              "type": "origins:fall_flying"
+            },
+            {
+              "type": "origins:swimming"
+            }
+          ]
+        }
+      ]
+    },
+    "key": {
+      "key": "key.origins.primary_active"
+    }
+  },
+
+  "trail_active": {
+    "type": "origins:cooldown",
+    "cooldown": 14,
+    "hud_render": {
+      "should_render": false
+    }
+  },
+
+  "trail": {
+    "type": "origins:action_over_time",
+    "entity_action": {
+      "type": "origins:execute_command",
+      "command": "execute positioned ~ ~-1 ~ run function breeze:sprinting_particles"
+    },
+    "interval": 1,
+    "condition": {
+      "type": "origins:resource",
+      "resource": "*:*_trail_active",
+      "comparison": ">",
+      "compare_to": 0
+    }
+  },
+
   "name": "§b§nWind Tunnel",
-  "description": "§fYou can launch yourself or a chosen target. Press §d[Primary Active]§f key to launch a target upwards or §d[Secondary Active]§f key to launch a target downwards. If you hold §d[Sneak]§f, §b[Wind Tunnel]§f will launch you instead. If you launch yourself upward with §b[Wind Tunnel]§f while on the ground, the force will be significantly reduced.",
+  "description": "§fUsing the air around you, you can use it to propel yourself in a variety of directions. Press §d[Primary Active]§f to launch yourself in the direction you are facing, the speed at which you are launched is based on your current momentum. Press §d[Secondary Active]§f to launch yourself upwards regardless of your current momentum. These abilities consume charges that will replenish shortly after use.",
   "badges": [
     {
       "sprite": "origins:textures/gui/badge/active.png",
-      "text": "§d[Primary Active] [Secondary Active] [Sneak]"
+      "text": "§d[Primary Active] [Secondary Active]"
     }
   ]
 }
